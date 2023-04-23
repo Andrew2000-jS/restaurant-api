@@ -1,1 +1,2 @@
-export * from './auth.entity'
+export * from './entityRoot'
+export * from './user'

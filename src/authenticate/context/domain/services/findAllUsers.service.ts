@@ -1,4 +1,4 @@
-import { AuthEntity } from '../entities'
+import { User } from '../entities'
 import { AuthRepository } from '../repository'
 
 export class FindAllUsersService {
@@ -8,7 +8,7 @@ export class FindAllUsersService {
         this._authRepository = authRepository
     }
 
-    async findId(): Promise<AuthEntity[]> {
+    async findId(): Promise<User[]> {
         const foundUsers = await this._authRepository.findAll()
         return foundUsers
     }

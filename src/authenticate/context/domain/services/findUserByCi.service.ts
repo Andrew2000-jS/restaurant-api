@@ -1,4 +1,4 @@
-import { AuthEntity } from '../entities'
+import { User } from '../entities'
 import { AuthRepository } from '../repository'
 import { UserAlreadyExistException, UserNotFoundException } from '../exceptions'
 
@@ -9,7 +9,7 @@ export class FindUserByCiService {
         this._authRepository = authRepository
     }
 
-    async findCi(ci: number): Promise<AuthEntity> {
+    async findCi(ci: number): Promise<User> {
         const foundUser = await this._authRepository.findByCi(ci)
 
         if (!foundUser) throw new UserNotFoundException()
@@ -17,7 +17,7 @@ export class FindUserByCiService {
         return foundUser
     }
 
-    async isAlreadyExist(ci: number): Promise<AuthEntity> {
+    async isAlreadyExist(ci: number): Promise<User> {
         const foundUser = await this._authRepository.findByCi(ci)
 
         if (foundUser) throw new UserAlreadyExistException()

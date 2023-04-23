@@ -1,4 +1,4 @@
-import { AuthEntity } from '../entities'
+import { User } from '../entities'
 import { AuthRepository } from '../repository'
 import { UserNotFoundException } from '../exceptions'
 
@@ -9,7 +9,7 @@ export class FindUserByIdService {
         this._authRepository = authRepository
     }
 
-    async findId(id: string): Promise<AuthEntity> {
+    async findId(id: string): Promise<User> {
         const foundUser = await this._authRepository.findById(id)
 
         if (!foundUser) throw new UserNotFoundException()

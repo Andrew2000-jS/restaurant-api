@@ -1,4 +1,4 @@
-import { AuthEntity } from '../entities'
+import { User } from '../entities'
 import { AuthRepository } from '../repository'
 import { UserAlreadyExistException, UserNotFoundException } from '../exceptions'
 
@@ -9,7 +9,7 @@ export class FindUserByEmailService {
         this._authRepository = authRepository
     }
 
-    async findEmail(email: string): Promise<AuthEntity> {
+    async findEmail(email: string): Promise<User> {
         const foundUser = await this._authRepository.findByEmail(email)
 
         if (!foundUser) throw new UserNotFoundException()
@@ -17,7 +17,7 @@ export class FindUserByEmailService {
         return foundUser
     }
 
-    async isAlreadyExist(email: string): Promise<AuthEntity> {
+    async isAlreadyExist(email: string): Promise<User> {
         const foundUser = await this._authRepository.findByEmail(email)
 
         if (foundUser) throw new UserAlreadyExistException()

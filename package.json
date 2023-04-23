@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:login": "NODE_ENV=development tsc-watch --onSuccess \"nodemon dist/login/apps/start.js\"",
+    "dev:auth": "NODE_ENV=development tsc-watch --onSuccess \"nodemon dist/authenticate/apps/app.js\"",
     "test": "NODE_ENV=test vitest",
     "coverage": "vitest run --coverage",
     "prepare": "husky install"
@@ -21,6 +21,7 @@
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.15.13",
     "@types/pg": "^8.6.6",
+    "bcrypt": "^5.1.0",
     "eslint": "^8.39.0",
     "husky": "^8.0.3",
     "jsonwebtoken": "^9.0.0",
