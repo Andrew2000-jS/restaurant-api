@@ -39,3 +39,9 @@ export class CiException extends Error {
         super('The provided ci is not valid')
     }
 }
+
+export class AgeException extends Error {
+    constructor() {
+        super('User is not of legal age')
+    }
+}

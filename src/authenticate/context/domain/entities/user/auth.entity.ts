@@ -1,4 +1,5 @@
 import { EntityRoot } from '../entityRoot'
+import { AgeException, EmptyFieldException } from './exceptions'
 import { UserPassword, UserPhone, UserEmail, UserName, UserCi, UserLastName } from './valueObjects'
 
 export interface AuthPrimitiveType {
@@ -103,7 +104,25 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
        }
    }
 
-   isAdult(birthdate?: Date): void {
-    console.log(birthdate)
+   isAdult(birthdate: Date): void {
+    if (!birthdate) {
+        throw new EmptyFieldException()
+    }
+
+    const today = new Date()
+    const year = birthdate.getFullYear()
+    const month = birthdate.getMonth()
+    const day = birthdate.getDate()
+    let age = today.getFullYear() - year
+    const currentMonth = today.getMonth()
+    const currentDay = today.getDate()
+
+    if (currentMonth < month || (currentMonth === month && currentDay < day)) {
+    age--
+    }
+
+    if (age < 18) {
+        throw new AgeException()
+    }
    }
 }

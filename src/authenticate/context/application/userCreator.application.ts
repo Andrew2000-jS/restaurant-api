@@ -1,28 +1,51 @@
-import { AuthPrimitiveType, User, UserCi, UserEmail, UserLastName, UserName, UserPassword, UserPhone, AuthRepository } from '../domain'
+import {
+  AuthPrimitiveType,
+  User,
+  UserCi,
+  UserEmail,
+  UserLastName,
+  UserName,
+  UserPassword,
+  UserPhone,
+  AuthRepository,
+  FindUserByCiService,
+  FindUserByEmailService
+} from '../domain'
+
 import { Crypter } from '../shared'
 
 export class UserCreator {
-    private readonly _authRepository: AuthRepository
+  private readonly _authRepository: AuthRepository
+  private readonly _findUserByCiService: FindUserByCiService
+  private readonly _findUserByEmailService: FindUserByEmailService
+  private readonly _crypter: Crypter
 
-    constructor (authRepository: AuthRepository) {
-        this._authRepository = authRepository
-    }
+  constructor(
+    authRepository: AuthRepository) {
+    this._authRepository = authRepository
+    this._findUserByCiService = new FindUserByCiService(this._authRepository)
+    this._findUserByEmailService = new FindUserByEmailService(this._authRepository)
+    this._crypter = new Crypter()
+  }
 
-    async run(user: AuthPrimitiveType): Promise<User> {
-        const crypter = new Crypter()
+  async run(user: AuthPrimitiveType): Promise<User> {
+    const newUser = new User({
+      ci: new UserCi(user.ci),
+      name: new UserName(user.name),
+      lastName: new UserLastName(user.lastName),
+      email: new UserEmail(user.email),
+      phone: new UserPhone(user.phone),
+      address: user.address,
+      birthdate: user.birthdate,
+      password: await this._crypter.encrypt(new UserPassword(user.password)._value)
+    })
 
-        const newUser = new User({
-            ci: new UserCi(user.ci),
-            name: new UserName(user.name),
-            lastName: new UserLastName(user.lastName),
-            email: new UserEmail(user.email),
-            phone: new UserPhone(user.phone),
-            address: user.address,
-            birthdate: user.birthdate,
-            password: await crypter.encrypt(new UserPassword(user.password)._value)
-        })
+    await this._findUserByCiService.isAlreadyExist(newUser.ci._value)
+    await this._findUserByEmailService.isAlreadyExist(newUser.email._value)
 
-        const creator = await this._authRepository.signup(newUser)
-        return creator
-    }
+    newUser.isAdult(newUser.birthdate)
+
+    const creator = await this._authRepository.signup(newUser)
+    return creator
+  }
 }

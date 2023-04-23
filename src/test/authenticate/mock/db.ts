@@ -41,11 +41,7 @@ export class DbMock implements AuthRepository {
     findByCi(ci: number): Promise<User> {
         const foundUser = this.db.find(x => x.ci._value === ci)
 
-        if (!foundUser) {
-            throw new UserNotFoundException()
-        }
-
-        return Promise.resolve(foundUser)
+        return Promise.resolve(foundUser!)
     }
 
     findById(id: string): Promise<User> {
@@ -61,11 +57,7 @@ export class DbMock implements AuthRepository {
     findByEmail(email: string): Promise<User> {
         const foundUser = this.db.find(x => x.email._value === email)
 
-        if (!foundUser) {
-            throw new UserNotFoundException()
-        }
-
-        return Promise.resolve(foundUser)
+        return Promise.resolve(foundUser!)
     }
 
     findAll(): Promise<User[]> {
