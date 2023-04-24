@@ -45,3 +45,9 @@ export class AgeException extends Error {
         super('User is not of legal age')
     }
 }
+
+export class InvalidLengthException extends Error {
+    constructor () {
+        super('At least 10 characters in this field')
+    }
+}

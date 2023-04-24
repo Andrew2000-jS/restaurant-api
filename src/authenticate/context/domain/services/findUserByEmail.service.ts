@@ -9,7 +9,7 @@ export class FindUserByEmailService {
         this._authRepository = authRepository
     }
 
-    async findEmail(email: string): Promise<User> {
+    async findEmail(email: string): Promise<User | undefined> {
         const foundUser = await this._authRepository.findByEmail(email)
 
         if (!foundUser) throw new UserNotFoundException()
@@ -17,7 +17,7 @@ export class FindUserByEmailService {
         return foundUser
     }
 
-    async isAlreadyExist(email: string): Promise<User> {
+    async isAlreadyExist(email: string): Promise<User | undefined> {
         const foundUser = await this._authRepository.findByEmail(email)
 
         if (foundUser) throw new UserAlreadyExistException()

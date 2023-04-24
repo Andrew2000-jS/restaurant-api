@@ -9,7 +9,7 @@ export class FindUserByIdService {
         this._authRepository = authRepository
     }
 
-    async findId(id: string): Promise<User> {
+    async findId(id: string): Promise<User | undefined> {
         const foundUser = await this._authRepository.findById(id)
 
         if (!foundUser) throw new UserNotFoundException()

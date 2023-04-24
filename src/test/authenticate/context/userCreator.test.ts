@@ -45,7 +45,7 @@ describe('User creator', () => {
             await expect(userCreator.run(newUser)).rejects.toThrowError(/User already exist!/)
         })
 
-        it('should throw if user fields are incorrect', async() => {
+        it('should throw if user fields are incorrect', async () => {
             const dbMock = new DbMock()
             const userCreator = new UserCreator(dbMock)
 
@@ -55,8 +55,8 @@ describe('User creator', () => {
                 lastName: 'Doe',
                 email: 'jhon@gmail.com',
                 birthdate: new Date('2000-09-06'),
-                address: 'Example address',
                 password: 'Abc@1235',
+                address: 'Example address',
                 phone: '000000000'
             }
 
@@ -81,6 +81,10 @@ describe('User creator', () => {
             newUser.phone = '000000000'
             newUser.birthdate = new Date('2007-01-31')
             await expect(userCreator.run(newUser)).rejects.toThrowError(/User is not of legal age/)
+
+            newUser.birthdate = new Date('2000-09-06')
+            newUser.address = 'invalid'
+            await expect(userCreator.run(newUser)).rejects.toThrowError(/At least 10 characters in this field/)
         })
     })
 })

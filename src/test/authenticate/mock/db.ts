@@ -8,43 +8,30 @@ export class DbMock implements AuthRepository {
         return Promise.resolve(user)
     }
 
-    login(user: AuthLoginType): Promise<User> {
+    login(user: AuthLoginType): Promise<User | undefined> {
         const foundUser = this.db.find(x => (x.ci && x.password) === (user.ci && user.password))
-
-        if (!foundUser) {
-            throw new UserNotFoundException()
-        }
-
         return Promise.resolve(foundUser)
     }
 
-    update(_id?: string, ci?: number | undefined): Promise<User> {
-        const foundUser = this.db.find(x => x.ci._value === ci)
-
-        if (!foundUser) {
-            throw new UserNotFoundException()
-        }
-
-        return Promise.resolve(foundUser)
+    update(id: string, user: User): Promise<User | undefined> {
+        const usersList = this.db.filter((_, i) => i.toString() !== id)
+        usersList.push(user)
+        this.db = usersList
+        return Promise.resolve(user)
     }
 
-    delete(_id?: string | undefined, ci?: number | undefined): Promise<void> {
-        const foundUser = this.db.find(x => x.ci._value === ci)
-
-        if (!foundUser) {
-            throw new UserNotFoundException()
-        }
-
+    delete(id: string): Promise<void> {
+        this.db = this.db.filter((_, i) => i.toString() !== id)
         return Promise.resolve()
     }
 
-    findByCi(ci: number): Promise<User> {
+    findByCi(ci: number): Promise<User | undefined> {
         const foundUser = this.db.find(x => x.ci._value === ci)
 
         return Promise.resolve(foundUser!)
     }
 
-    findById(id: string): Promise<User> {
+    findById(id: string): Promise<User | undefined> {
         const foundUser = this.db.find((_, i) => i.toString() === id)
 
         if (!foundUser) {
@@ -54,7 +41,7 @@ export class DbMock implements AuthRepository {
         return Promise.resolve(foundUser)
     }
 
-    findByEmail(email: string): Promise<User> {
+    findByEmail(email: string): Promise<User | undefined> {
         const foundUser = this.db.find(x => x.email._value === email)
 
         return Promise.resolve(foundUser!)

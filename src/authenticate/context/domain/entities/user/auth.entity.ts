@@ -1,6 +1,6 @@
 import { EntityRoot } from '../entityRoot'
 import { AgeException, EmptyFieldException } from './exceptions'
-import { UserPassword, UserPhone, UserEmail, UserName, UserCi, UserLastName } from './valueObjects'
+import { UserPassword, UserPhone, UserEmail, UserName, UserCi, UserLastName, UserAddress } from './valueObjects'
 
 export interface AuthPrimitiveType {
     ci: number
@@ -22,7 +22,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
    readonly lastName: UserName
    readonly email: UserEmail
    readonly phone: UserPhone
-   readonly address: string
+   readonly address: UserAddress
    readonly password: string
 
    constructor({ ci, birthdate, name, lastName, email, phone, address, password }: {
@@ -31,9 +31,9 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
     birthdate: Date
     email: UserEmail
     phone: UserPhone
-    password: string
     ci: UserCi
-    address: string
+    address: UserAddress
+    password: string
 }) {
     super()
     this.ci = ci
@@ -53,7 +53,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
     lastName: UserLastName,
     email: UserEmail,
     phone: UserPhone,
-    address: string,
+    address: UserAddress,
     password: string
 
     ): User {
@@ -86,7 +86,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
         birthdate: plainData.birthdate,
         email: new UserEmail(plainData.email),
         phone: new UserPhone(plainData.phone),
-        address: plainData.address,
+        address: new UserAddress(plainData.address),
         password: new UserPassword(plainData.password)._value
     })
    }
@@ -99,7 +99,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
         email: this.email._value,
         phone: this.phone._value,
         birthdate: this.birthdate,
-        address: this.address,
+        address: this.address._value,
         password: this.password
        }
    }

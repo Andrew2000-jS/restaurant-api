@@ -17,7 +17,7 @@ export class FindUserByCiService {
         return foundUser
     }
 
-    async isAlreadyExist(ci: number): Promise<User> {
+    async isAlreadyExist(ci: number): Promise<User | undefined> {
         const foundUser = await this._authRepository.findByCi(ci)
 
         if (foundUser) throw new UserAlreadyExistException()
