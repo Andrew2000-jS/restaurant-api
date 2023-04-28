@@ -1,4 +1,4 @@
-import { AuthRepository, FindUserByCiService, PasswordNotMatchException, User } from '../domain'
+import { AuthRepository, FindUserByCiService, User } from '../domain'
 import { Crypter } from '../shared'
 
 export class UserLogger {
@@ -14,11 +14,7 @@ export class UserLogger {
 
     async run(ci: number, password: string): Promise<User | undefined> {
         const foundUser = await this._findUserByCiService.findCi(ci)
-        const comparePasswords = await this._crypter.comparePasswords(password, foundUser.password)
-
-        if (!comparePasswords) {
-            throw new PasswordNotMatchException()
-        }
+        await this._crypter.comparePasswords(password, foundUser.password)
 
         return foundUser
     }
