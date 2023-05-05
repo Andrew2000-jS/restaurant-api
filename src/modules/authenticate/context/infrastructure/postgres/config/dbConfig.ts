@@ -1,11 +1,14 @@
 import { Pool } from 'pg'
+import { config } from 'dotenv'
 
-// const { DB_HOST_DEV, DB_NAME_DEV, DB_PASS_DEV, DB_PORT_DEV, DB_USER_DEV } = process.env
+config({ path: '.env.local' })
+
+const { DB_HOST_DEV, DB_NAME_DEV, DB_PASS_DEV, DB_PORT_DEV, DB_USER_DEV } = process.env
 
 export default new Pool({
-    host: 'localhost',
-    user: 'postgres',
-    password: '',
-    port: 5432,
-    database: 'restaurant_test'
+    host: DB_HOST_DEV,
+    user: DB_USER_DEV,
+    password: DB_PASS_DEV,
+    port: Number(DB_PORT_DEV),
+    database: DB_NAME_DEV
 })

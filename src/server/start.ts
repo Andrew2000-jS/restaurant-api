@@ -1,7 +1,7 @@
 import { Server } from './server'
 import { config } from 'dotenv'
 
-config()
+config({ path: '.env.local' })
 
 const server = new Server(8080)
 

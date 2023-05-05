@@ -5,9 +5,7 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import { authRoutes } from '../modules/authenticate/apps/routes'
 
-import { config } from 'dotenv'
 import { errorMiddleware } from '../modules/authenticate/apps/middlewares'
-config()
 
 export class Server {
   private readonly _express: Express

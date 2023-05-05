@@ -2,12 +2,16 @@ import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 import { ApiError } from '../../@types'
 
+import { config } from 'dotenv'
+
+config({ path: '.env.local' })
+
 interface JwtPayload {
   forToken: [key: string]
 }
 
 export const createToken = (payload: string | object): any => {
-  const token = jwt.sign(payload, 'mySecret')
+  const token = jwt.sign(payload, process.env.SECRET_KEY)
   return token
 }
 
@@ -19,7 +23,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction): an
     }
 
     if (token) {
-      const { forToken } = jwt.verify(token, 'mySecret') as JwtPayload
+      const { forToken } = jwt.verify(token, process.env.SECRET_KEY) as JwtPayload
       req.authData = forToken
       next()
     } else {
