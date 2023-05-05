@@ -1,7 +1,7 @@
 import { expect, it, describe } from 'vitest'
 import { DbMock } from '../mock'
-import { UserCreator, UserUpdater } from '@/authenticate/context/application'
-import { AuthPrimitiveType } from '@/authenticate/context/domain'
+import { UserCreator, UserUpdater } from 'modules/authenticate/context/application'
+import { AuthPrimitiveType } from 'modules/authenticate/context/domain'
 
 describe('User Updater', () => {
     it('should can update an user', async () => {

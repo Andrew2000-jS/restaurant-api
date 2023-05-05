@@ -1,7 +1,7 @@
 import { expect, it, describe } from 'vitest'
 import { DbMock } from '../mock'
-import { UserCreator, UserDeleter } from '@/authenticate/context/application'
-import { AuthPrimitiveType } from '@/authenticate/context/domain'
+import { UserCreator, UserDeleter } from 'modules/authenticate/context/application'
+import { AuthPrimitiveType } from 'modules/authenticate/context/domain'
 
 describe('Use Deleter', () => {
     it('should can delete an user', async () => {

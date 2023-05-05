@@ -3,6 +3,11 @@ import * as http from 'http'
 import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
+import { authRoutes } from '../modules/authenticate/apps/routes'
+
+import { config } from 'dotenv'
+import { errorMiddleware } from '../modules/authenticate/apps/middlewares'
+config()
 
 export class Server {
   private readonly _express: Express
@@ -16,6 +21,8 @@ export class Server {
     this._express.use(helmet())
     this._express.use(express.json())
     this._express.use(morgan('dev'))
+    this._express.use('/api', authRoutes)
+    this._express.use(errorMiddleware)
   }
 
   async listen(): Promise<void> {

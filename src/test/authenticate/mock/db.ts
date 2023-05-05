@@ -1,4 +1,4 @@
-import { AuthRepository, User, AuthLoginType, UserNotFoundException } from '@/authenticate/context/domain'
+import { AuthRepository, User } from 'modules/authenticate/context/domain'
 
 export class DbMock implements AuthRepository {
     db: User[] = []
@@ -8,8 +8,8 @@ export class DbMock implements AuthRepository {
         return Promise.resolve(user)
     }
 
-    login(user: AuthLoginType): Promise<User | undefined> {
-        const foundUser = this.db.find(x => (x.ci && x.password) === (user.ci && user.password))
+    login(ci: number, password: string): Promise<User | undefined> {
+        const foundUser = this.db.find(x => (x.ci && x.password) === (ci && password))
         return Promise.resolve(foundUser)
     }
 
@@ -33,10 +33,6 @@ export class DbMock implements AuthRepository {
 
     findById(id: string): Promise<User | undefined> {
         const foundUser = this.db.find((_, i) => i.toString() === id)
-
-        if (!foundUser) {
-            throw new UserNotFoundException()
-        }
 
         return Promise.resolve(foundUser)
     }
