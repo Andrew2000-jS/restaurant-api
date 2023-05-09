@@ -1,4 +1,6 @@
 import express, { Express } from 'express'
+import swaggerUi from 'swagger-ui-express'
+import * as swaggerDocument from '../shared/config/swagger.json'
 import * as http from 'http'
 import cors from 'cors'
 import helmet from 'helmet'
@@ -20,6 +22,7 @@ export class Server {
     this._express.use(express.json())
     this._express.use(morgan('dev'))
     this._express.use('/api', authRoutes)
+    this._express.use('/api/docs/auth', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
     this._express.use(errorMiddleware)
   }
 
