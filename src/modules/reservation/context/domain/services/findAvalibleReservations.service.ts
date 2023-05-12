@@ -12,6 +12,7 @@ export class FindAvalibleReservation {
 
     async run(): Promise<Reservation[]> {
         const foundReservations = await this._reservationRepository.getAll()
+
         if (foundReservations.length === 0) {
             throw new NoReservationsFound()
         }
