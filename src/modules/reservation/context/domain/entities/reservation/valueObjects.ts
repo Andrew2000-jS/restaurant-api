@@ -29,10 +29,10 @@ export class ReservationPeopleCount {
 }
 
 export class ReservationAvalible {
-  readonly _value: number
+  readonly _value: boolean
 
-  constructor(value: number) {
-    if (value < 0) {
+  constructor(value: boolean) {
+    if (typeof value !== 'boolean') {
       throw new AvalibleReservationExepction()
     }
 

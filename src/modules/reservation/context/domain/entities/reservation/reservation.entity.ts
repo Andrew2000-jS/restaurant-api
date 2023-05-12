@@ -3,10 +3,10 @@ import { ReservationAvalible, ReservationHour, ReservationPeopleCount, Reservati
 
 export interface ReservationPrimitiveData {
   date: Date
-  hour: ReservationHour
-  peopleCount: ReservationPeopleCount
-  avalibleReservations: ReservationAvalible
-  user: ReservationUser
+  hour: string
+  peopleCount: number
+  avalibleReservations: boolean
+  user: any
 }
 
 export class Reservation extends EntityRoot<
@@ -61,7 +61,7 @@ export class Reservation extends EntityRoot<
     hour: string
     peopleCount: number
     user: any
-    avalibleReservations: number
+    avalibleReservations: boolean
   }): Reservation {
     return new Reservation({
       date: plainData.date,
@@ -75,9 +75,9 @@ export class Reservation extends EntityRoot<
   toPrimitive(): ReservationPrimitiveData {
     return {
       date: this.date,
-      hour: this.hour,
-      peopleCount: this.peopleCount,
-      avalibleReservations: this.avalibleReservations,
+      hour: this.hour._value,
+      peopleCount: this.peopleCount._value,
+      avalibleReservations: this.avalibleReservations._value,
       user: this.user
     }
   }
