@@ -23,10 +23,12 @@ export class ReservationCreator {
         const newReservation: Reservation = new Reservation({
             date: reservationData.date,
             hour: new ReservationHour(reservationData.hour._value),
-            avalibleReservations: new ReservationAvalible(reservationData.avalibleReservations._value),
+            reservationStatus: new ReservationAvalible(reservationData.reservationStatus._value),
             peopleCount: new ReservationPeopleCount(reservationData.peopleCount._value),
             user: new ReservationUser(reservationData.user._value)
         })
+
+        await this._reservationRepository.create(newReservation)
 
         return newReservation
     }

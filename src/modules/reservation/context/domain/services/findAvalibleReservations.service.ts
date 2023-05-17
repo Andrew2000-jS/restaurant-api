@@ -10,15 +10,17 @@ export class FindAvalibleReservation {
         this._reservationRepository = reservationRepository
     }
 
-    async run(): Promise<Reservation[]> {
-        const foundReservations = await this._reservationRepository.getAll()
+    async run(): Promise<Reservation | any> {
+        const foundReservations: Reservation[] = await this._reservationRepository.getAll()
 
-        if (foundReservations.length === 0) {
+        if (foundReservations.length === 0) return
+
+        const avalibleReservationIndex = foundReservations.findIndex((r) => r.reservationStatus._value === true)
+
+        if (avalibleReservationIndex < 0) {
             throw new NoReservationsFound()
         }
 
-        const avalibleRe = foundReservations.filter(r => r.avalibleReservations._value === true)
-
-        return avalibleRe
+        return foundReservations[avalibleReservationIndex]
     }
 }

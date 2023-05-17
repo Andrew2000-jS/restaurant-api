@@ -1,6 +1,5 @@
 import { AuthRepository, User } from '../../domain'
-import { CommonQueries } from '../../../../../shared'
-import { PostgresDB } from './config'
+import { CommonQueries, PostgresDB } from '../../../../../shared'
 
 export class PostgresAuthRepository implements AuthRepository {
   private readonly _instance: PostgresDB
@@ -16,8 +15,7 @@ export class PostgresAuthRepository implements AuthRepository {
   }
 
   async signup(user: User): Promise<User> {
-    const { name, lastName, email, phone, address, password, ci, birthdate } =
-      user
+    const { name, lastName, email, phone, address, password, ci, birthdate } = user
     const values = [
       name._value,
       lastName._value,
@@ -30,7 +28,7 @@ export class PostgresAuthRepository implements AuthRepository {
     ]
     const columns = [
       'name',
-      'lastName',
+      'last_name',
       'email',
       'phone',
       'address',
@@ -46,7 +44,7 @@ export class PostgresAuthRepository implements AuthRepository {
 
   async update(id: string, data: User): Promise<User | undefined> {
     const query = await this._instance.query(
-      'UPDATE users SET ci=$1, name=$2, lastName=$3, email=$4, phone=$5, address=$6, birthdate=$7, password=$8 WHERE id=$9',
+      'UPDATE users SET ci=$1, name=$2, last_name=$3, email=$4, phone=$5, address=$6, birthdate=$7, password=$8 WHERE id=$9',
       [
         data.ci._value,
         data.name._value,

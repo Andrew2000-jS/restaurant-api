@@ -25,6 +25,8 @@ export class ReservationPeopleCount {
     if (value < 0) {
       throw new PeopleCountExepction()
     }
+
+    this._value = value
   }
 }
 
