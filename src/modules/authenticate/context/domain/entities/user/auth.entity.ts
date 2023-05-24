@@ -6,7 +6,7 @@ export interface AuthPrimitiveType {
     ci: number
     birthdate: Date
     name: string
-    lastName: string
+    lastname: string
     email: string
     phone: string
     address: string
@@ -17,15 +17,15 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
    readonly ci: UserCi
    readonly birthdate: Date
    readonly name: UserName
-   readonly lastName: UserName
+   readonly lastname: UserName
    readonly email: UserEmail
    readonly phone: UserPhone
    readonly address: UserAddress
    readonly password: string
 
-   constructor({ ci, birthdate, name, lastName, email, phone, address, password }: {
+   constructor({ ci, birthdate, name, lastname, email, phone, address, password }: {
     name: UserName
-    lastName: UserLastName
+    lastname: UserLastName
     birthdate: Date
     email: UserEmail
     phone: UserPhone
@@ -37,7 +37,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
     this.ci = ci
     this.birthdate = birthdate
     this.name = name
-    this.lastName = lastName
+    this.lastname = lastname
     this.email = email
     this.phone = phone
     this.address = address
@@ -48,7 +48,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
     ci: UserCi,
     birthdate: Date,
     name: UserName,
-    lastName: UserLastName,
+    lastname: UserLastName,
     email: UserEmail,
     phone: UserPhone,
     address: UserAddress,
@@ -58,7 +58,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
         return new User({
             ci,
             name,
-            lastName,
+            lastname,
             email,
             phone,
             birthdate,
@@ -71,7 +71,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
     birthdate: Date
     ci: number
     name: string
-    lastName: string
+    lastname: string
     email: string
     phone: string
     address: string
@@ -80,7 +80,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
     return new User({
         ci: new UserCi(plainData.ci),
         name: new UserName(plainData.name),
-        lastName: new UserName(plainData.lastName),
+        lastname: new UserName(plainData.lastname),
         birthdate: plainData.birthdate,
         email: new UserEmail(plainData.email),
         phone: new UserPhone(plainData.phone),
@@ -93,7 +93,7 @@ export class User extends EntityRoot<User, AuthPrimitiveType> {
        return {
         ci: this.ci._value,
         name: this.name._value,
-        lastName: this.lastName._value,
+        lastname: this.lastname._value,
         email: this.email._value,
         phone: this.phone._value,
         birthdate: this.birthdate,

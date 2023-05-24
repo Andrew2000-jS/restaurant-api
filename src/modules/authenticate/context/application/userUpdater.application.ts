@@ -23,13 +23,13 @@ export class UserUpdater {
     this._crypter = new Crypter()
   }
 
-  async run(id: string, data: AuthPrimitiveType): Promise<User | undefined> {
+  async run(id: string, data: AuthPrimitiveType): Promise<User> {
     const foundUser = await this._findByIdService.findId(id)
 
     const userToUpdate = new User({
       ci: new UserCi(data.ci ?? foundUser.ci),
       name: new UserName(data.name ?? foundUser.name),
-      lastName: new UserLastName(data.lastName ?? foundUser.lastName),
+      lastname: new UserLastName(data.lastname ?? foundUser.lastname),
       birthdate: data.birthdate ?? foundUser.birthdate,
       email: new UserEmail(data.email ?? foundUser.email),
       password: data.password === undefined ? foundUser.password : await this._crypter.encrypt(data.password),

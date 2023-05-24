@@ -43,6 +43,12 @@ export class DbMock implements AuthRepository {
         return Promise.resolve(foundUser!)
     }
 
+    findByPhone(phone: string): Promise<User | undefined> {
+        const foundUser = this.db.find(x => x.phone._value === phone)
+
+        return Promise.resolve(foundUser!)
+    }
+
     findAll(): Promise<User[]> {
         return Promise.resolve(this.db)
     }

@@ -12,7 +12,7 @@ describe('User Updater', () => {
         const newUser: AuthPrimitiveType = {
             ci: 11111111,
             name: 'Jhon',
-            lastName: 'Doe',
+            lastname: 'Doe',
             email: 'jhon@gmail.com',
             birthdate: new Date('2000-09-06'),
             address: 'Example address',
@@ -30,7 +30,7 @@ describe('User Updater', () => {
         const updatedUser: AuthPrimitiveType = {
             ci: 21234567,
             name: 'Bill',
-            lastName: 'Doe',
+            lastname: 'Doe',
             email: 'bill@gmail.com',
             birthdate: new Date('1999-09-06'),
             address: 'Example address',

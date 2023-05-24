@@ -4,8 +4,8 @@ import { ReservationAvalible, ReservationHour, ReservationPeopleCount, Reservati
 export interface ReservationPrimitiveData {
   date: Date
   hour: string
-  peopleCount: number
-  reservationStatus: boolean
+  count: number
+  status: boolean
   user: any
 }
 
@@ -15,43 +15,43 @@ export class Reservation extends EntityRoot<
 > {
   readonly date: Date
   readonly hour: ReservationHour
-  readonly peopleCount: ReservationPeopleCount
-  readonly reservationStatus: ReservationAvalible
+  readonly count: ReservationPeopleCount
+  readonly status: ReservationAvalible
   readonly user: ReservationUser
 
   constructor({
     date,
     hour,
-    peopleCount,
+    count,
     user,
-    reservationStatus
+    status
   }: {
     date: Date
     hour: ReservationHour
-    peopleCount: ReservationPeopleCount
+    count: ReservationPeopleCount
     user: ReservationUser
-    reservationStatus: ReservationAvalible
+    status: ReservationAvalible
   }) {
     super()
     this.date = date
     this.hour = hour
-    this.peopleCount = peopleCount
+    this.count = count
     this.user = user
-    this.reservationStatus = reservationStatus
+    this.status = status
   }
 
   static create(
     date: Date,
     hour: ReservationHour,
-    peopleCount: ReservationPeopleCount,
+    count: ReservationPeopleCount,
     user: ReservationUser,
-    reservationStatus: ReservationAvalible
+    status: ReservationAvalible
   ): Reservation {
     return new Reservation({
       date,
       hour,
-      peopleCount,
-      reservationStatus,
+      count,
+      status,
       user
     })
   }
@@ -59,15 +59,15 @@ export class Reservation extends EntityRoot<
   fromPrimitives(plainData: {
     date: Date
     hour: string
-    peopleCount: number
+    count: number
     user: any
-    reservationStatus: boolean
+    status: boolean
   }): Reservation {
     return new Reservation({
       date: plainData.date,
       hour: new ReservationHour(plainData.hour),
-      peopleCount: new ReservationPeopleCount(plainData.peopleCount),
-      reservationStatus: new ReservationAvalible(plainData.reservationStatus),
+      count: new ReservationPeopleCount(plainData.count),
+      status: new ReservationAvalible(plainData.status),
       user: new ReservationUser(plainData.user)
     })
   }
@@ -76,8 +76,8 @@ export class Reservation extends EntityRoot<
     return {
       date: this.date,
       hour: this.hour._value,
-      peopleCount: this.peopleCount._value,
-      reservationStatus: this.reservationStatus._value,
+      count: this.count._value,
+      status: this.status._value,
       user: this.user
     }
   }

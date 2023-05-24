@@ -1,31 +1,27 @@
 import {
   Reservation,
-  FindAvalibleReservation,
   ReservationAvalible,
   ReservationHour,
   ReservationPeopleCount,
   ReservationUser,
-  ReservationRepository
+  ReservationRepository,
+  ReservationPrimitiveData
 } from '../domain'
 
 export class ReservationCreator {
     private readonly _reservationRepository: ReservationRepository
-    private readonly _findAvalibleReservation: FindAvalibleReservation
 
     constructor (reservationRepository: ReservationRepository) {
         this._reservationRepository = reservationRepository
-        this._findAvalibleReservation = new FindAvalibleReservation(this._reservationRepository)
     }
 
-    async run(reservationData: Reservation): Promise<Reservation> {
-        await this._findAvalibleReservation.run()
-
+    async run(reservationData: ReservationPrimitiveData): Promise<Reservation> {
         const newReservation: Reservation = new Reservation({
             date: reservationData.date,
-            hour: new ReservationHour(reservationData.hour._value),
-            reservationStatus: new ReservationAvalible(reservationData.reservationStatus._value),
-            peopleCount: new ReservationPeopleCount(reservationData.peopleCount._value),
-            user: new ReservationUser(reservationData.user._value)
+            hour: new ReservationHour(reservationData.hour),
+            status: new ReservationAvalible(reservationData.status),
+            count: new ReservationPeopleCount(reservationData.count),
+            user: new ReservationUser(reservationData.user)
         })
 
         await this._reservationRepository.create(newReservation)

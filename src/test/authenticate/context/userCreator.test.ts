@@ -11,7 +11,7 @@ describe('User creator', () => {
         const newUser: AuthPrimitiveType = {
             ci: 11111111,
             name: 'Jhon',
-            lastName: 'Doe',
+            lastname: 'Doe',
             email: 'jhon@gmail.com',
             birthdate: new Date('2000-09-06'),
             address: 'Example address',
@@ -33,7 +33,7 @@ describe('User creator', () => {
             const newUser: AuthPrimitiveType = {
                 ci: 11111111,
                 name: 'Jhon',
-                lastName: 'Doe',
+                lastname: 'Doe',
                 email: 'jhon@gmail.com',
                 birthdate: new Date('2000-09-06'),
                 address: 'Example address',
@@ -52,7 +52,7 @@ describe('User creator', () => {
             const newUser: AuthPrimitiveType = {
                 ci: 11111111,
                 name: 'Jhon@',
-                lastName: 'Doe',
+                lastname: 'Doe',
                 email: 'jhon@gmail.com',
                 birthdate: new Date('2000-09-06'),
                 password: 'Abc@1235',
@@ -63,10 +63,10 @@ describe('User creator', () => {
             await expect(userCreator.run(newUser)).rejects.toThrowError(/The provided name are not valid/)
 
             newUser.name = 'Jhon'
-            newUser.lastName = 'Doe1234'
+            newUser.lastname = 'Doe1234'
             await expect(userCreator.run(newUser)).rejects.toThrowError(/The provided last name are not valid/)
 
-            newUser.lastName = 'Doe'
+            newUser.lastname = 'Doe'
             newUser.email = 'jhongmail.com'
             await expect(userCreator.run(newUser)).rejects.toThrowError(/The provided email is not valid/)
 

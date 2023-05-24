@@ -11,7 +11,7 @@ describe('Use Deleter', () => {
         const newUser: AuthPrimitiveType = {
             ci: 11111111,
             name: 'Jhon',
-            lastName: 'Doe',
+            lastname: 'Doe',
             email: 'jhon@gmail.com',
             birthdate: new Date('2000-09-06'),
             address: 'Example address',

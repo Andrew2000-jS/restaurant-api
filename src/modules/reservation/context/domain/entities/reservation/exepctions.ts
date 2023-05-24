@@ -10,7 +10,7 @@ export class PeopleCountExepction extends Error {
     }
 }
 
-export class AvalibleReservationExepction extends Error {
+export class AvalibleReservationException extends Error {
     constructor() {
         super('The provided avalible reservations are not valid')
     }
@@ -19,5 +19,11 @@ export class AvalibleReservationExepction extends Error {
 export class UserReservationException extends Error {
     constructor() {
         super('The provided user is not valid')
+    }
+}
+
+export class DateReservationException extends Error {
+    constructor() {
+        super('The provided date is not valid')
     }
 }

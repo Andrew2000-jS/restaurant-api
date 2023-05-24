@@ -8,5 +8,6 @@ export interface AuthRepository {
     findByCi: (ci: number) => Promise<User | undefined>
     findById: (id: string) => Promise<User | undefined>
     findByEmail: (email: string) => Promise<User | undefined>
+    findByPhone: (phone: string) => Promise<User | undefined>
     findAll: () => Promise<User[]>
 }

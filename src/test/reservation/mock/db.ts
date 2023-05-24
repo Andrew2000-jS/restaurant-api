@@ -14,8 +14,8 @@ export class DbMock implements ReservationRepository {
     const newReservation = new Reservation({
       date: reservation.date,
       hour: new ReservationHour(reservation.hour._value),
-      peopleCount: new ReservationPeopleCount(reservation.peopleCount._value),
-      reservationStatus: new ReservationAvalible(reservation.reservationStatus._value),
+      count: new ReservationPeopleCount(reservation.count._value),
+      status: new ReservationAvalible(reservation.status._value),
       user: new ReservationUser(reservation.user._value)
     })
 

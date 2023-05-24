@@ -5,7 +5,8 @@ import {
   ReservationHour,
   ReservationPeopleCount,
   ReservationUser,
-  ReservationRepository
+  ReservationRepository,
+  ReservationPrimitiveData
 } from '../domain'
 
 export class ReservationUpdater {
@@ -19,17 +20,17 @@ export class ReservationUpdater {
     )
   }
 
-  async run(id: string, reservationData: Reservation): Promise<Reservation> {
-    const foundReservation = await this._findReservationById.run(id)
+  async run(id: string, reservationData: ReservationPrimitiveData): Promise<Reservation> {
+    const foundReservation: any = await this._findReservationById.run(id)
+
+    const reservationDate = !isNaN(reservationData.date.getTime()) ? reservationData.date : null
 
     const newReservation: Reservation = new Reservation({
-      date: reservationData.date ?? foundReservation.date,
-      hour: new ReservationHour(reservationData.hour._value) ?? foundReservation.hour,
-      avalibleReservations:
-        new ReservationAvalible(reservationData.avalibleReservations._value) ??
-        foundReservation.avalibleReservations,
-      peopleCount: new ReservationPeopleCount(reservationData.peopleCount._value) ?? foundReservation.peopleCount,
-      user: new ReservationUser(reservationData.user._value) ?? foundReservation.user
+      date: reservationDate ?? foundReservation.date,
+      hour: new ReservationHour(reservationData.hour ?? foundReservation.hour),
+      status: new ReservationAvalible(reservationData.status ?? foundReservation.status),
+      count: new ReservationPeopleCount(reservationData.count ?? foundReservation.count),
+      user: new ReservationUser(reservationData.user ?? foundReservation.id_users)
     })
 
     await this._reservationRepository.update(id, newReservation)

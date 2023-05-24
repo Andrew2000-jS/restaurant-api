@@ -1,15 +1,16 @@
 import {
   HourFormatException,
   PeopleCountExepction,
-  AvalibleReservationExepction,
-  UserReservationException
+  AvalibleReservationException,
+  UserReservationException,
+  DateReservationException
 } from './exepctions'
 
 export class ReservationHour {
   readonly _value: string
 
   constructor(value: string) {
-    const reg = /^(?:[01]\d|2[0-3]):[0-5]\d$/
+    const reg = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
     if (!reg.test(value)) {
       throw new HourFormatException()
     }
@@ -22,9 +23,11 @@ export class ReservationPeopleCount {
   readonly _value: number
 
   constructor(value: number) {
-    if (value < 0) {
-      throw new PeopleCountExepction()
-    }
+    const charRegex = /[a-zA-Z]/
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>\s]/
+    const valueStr = value.toString()
+
+    if (charRegex.test(valueStr) || specialCharRegex.test(valueStr) || valueStr === '' || value < 0) throw new PeopleCountExepction()
 
     this._value = value
   }
@@ -35,7 +38,7 @@ export class ReservationAvalible {
 
   constructor(value: boolean) {
     if (typeof value !== 'boolean') {
-      throw new AvalibleReservationExepction()
+      throw new AvalibleReservationException()
     }
 
     this._value = value
@@ -43,18 +46,25 @@ export class ReservationAvalible {
 }
 
 export class ReservationUser {
-  readonly _value: any
+  readonly _value: number
 
-  constructor(value: any) {
-    if (
-        Array.isArray(value) ||
-        typeof value !== 'object' ||
-        value === null ||
-        value === undefined ||
-        Object.keys(value).length === 0 ||
-        (typeof value === 'string' || typeof value === 'number')
-    ) {
+  constructor(value: number) {
+    if (!value) {
       throw new UserReservationException()
+    }
+
+    this._value = value
+  }
+}
+
+export class ReservationDate {
+  readonly _value: Date
+
+  constructor(value: Date) {
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/
+
+    if (!dateRegex.test(value.toISOString().split('T')[0])) {
+      throw new DateReservationException()
     }
 
     this._value = value

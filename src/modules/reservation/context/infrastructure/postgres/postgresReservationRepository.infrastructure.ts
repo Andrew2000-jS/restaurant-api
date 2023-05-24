@@ -9,15 +9,16 @@ export class PostgresReservationRepository implements ReservationRepository {
   }
 
   async create(reservation: Reservation): Promise<Reservation> {
-    const { date, hour, peopleCount, user } = reservation
+    const { date, hour, count, user, status } = reservation
 
     const columns = [
-      'reservation_date',
-      'reservation_hour',
-      'number_people',
+      'date',
+      'hour',
+      'count',
+      'status',
       'id_users'
     ]
-    const values = [date, hour._value, peopleCount._value, user]
+    const values = [date, hour._value, count._value, status._value, user._value]
     const insert = CommonQueries.insert('reservations', columns, values)
 
     const result = await this._instance.query(insert, values)
@@ -25,10 +26,10 @@ export class PostgresReservationRepository implements ReservationRepository {
   }
 
   async update(id: string, reservation: Reservation): Promise<Reservation> {
-    const { date, hour, peopleCount } = reservation
+    const { date, hour, count, status } = reservation
     const query =
-      'UPDATE reservations SET reservation_date=$1, reservation_hour=$2, number_people=$3 WHERE id=$4'
-    const values = [date, hour._value, peopleCount._value, Number(id)]
+      'UPDATE reservations SET date=$1, hour=$2, count=$3, status=$4 WHERE id=$5'
+    const values = [date, hour._value, count._value, status._value, Number(id)]
 
     const result = await this._instance.query(query, values)
     return result
@@ -42,6 +43,9 @@ export class PostgresReservationRepository implements ReservationRepository {
   async getAll(): Promise<Reservation[]> {
     const query = CommonQueries.selectAll('reservations')
     const result = await this._instance.query(query)
+    if (result === undefined) {
+      return []
+    }
     return result
   }
 

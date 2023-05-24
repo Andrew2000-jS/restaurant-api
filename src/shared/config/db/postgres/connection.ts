@@ -1,5 +1,6 @@
 import { Pool } from 'pg'
 import dbConfig from './dbConfig'
+import { PgException } from './exception'
 
 export class PostgresDB {
   private static instance: PostgresDB
@@ -21,8 +22,9 @@ export class PostgresDB {
     try {
         const response = await this.pool.query(text, params)
         return response.rows[0]
-    } catch (error) {
-      console.log(error)
+    } catch (error: any) {
+      console.log(error.message)
+      throw new PgException()
     }
   }
 }

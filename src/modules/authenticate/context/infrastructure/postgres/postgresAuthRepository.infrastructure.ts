@@ -15,10 +15,10 @@ export class PostgresAuthRepository implements AuthRepository {
   }
 
   async signup(user: User): Promise<User> {
-    const { name, lastName, email, phone, address, password, ci, birthdate } = user
+    const { name, lastname, email, phone, address, password, ci, birthdate } = user
     const values = [
       name._value,
-      lastName._value,
+      lastname._value,
       email._value,
       phone._value,
       address._value,
@@ -28,7 +28,7 @@ export class PostgresAuthRepository implements AuthRepository {
     ]
     const columns = [
       'name',
-      'last_name',
+      'lastName',
       'email',
       'phone',
       'address',
@@ -44,11 +44,11 @@ export class PostgresAuthRepository implements AuthRepository {
 
   async update(id: string, data: User): Promise<User | undefined> {
     const query = await this._instance.query(
-      'UPDATE users SET ci=$1, name=$2, last_name=$3, email=$4, phone=$5, address=$6, birthdate=$7, password=$8 WHERE id=$9',
+      'UPDATE users SET ci=$1, name=$2, lastName=$3, email=$4, phone=$5, address=$6, birthdate=$7, password=$8 WHERE id=$9',
       [
         data.ci._value,
         data.name._value,
-        data.lastName._value,
+        data.lastname._value,
         data.email._value,
         data.phone._value,
         data.address._value,
@@ -84,8 +84,17 @@ export class PostgresAuthRepository implements AuthRepository {
 
   async findByEmail(email: string): Promise<User | undefined> {
     const query: User = await this._instance.query(
-      `SELECT * FROM users WHERE email=${email}`
+      'SELECT * FROM users WHERE email=$1', [email]
     )
+
+    return query
+  }
+
+  async findByPhone(phone: string): Promise<User | undefined> {
+    const query: User = await this._instance.query(
+      'SELECT * FROM users WHERE phone=$1', [phone]
+    )
+
     return query
   }
 

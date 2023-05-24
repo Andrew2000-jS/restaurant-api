@@ -19,7 +19,7 @@ export const signupCtr = async (
     ci: body.ci,
     birthdate: new Date(body.birthdate),
     name: body.name,
-    lastName: body.lastName,
+    lastname: body.lastname,
     email: body.email,
     phone: body.phone,
     address: body.address,
@@ -30,7 +30,7 @@ export const signupCtr = async (
     ci: body.ci,
     birthdate: new Date(body.birthdate),
     name: body.name,
-    lastName: body.lastName,
+    lastname: body.lastname,
     email: body.email,
     phone: body.phone,
     address: body.address
@@ -40,7 +40,7 @@ export const signupCtr = async (
     await userCreator.run(data)
 
     const response: ApiResponse<typeof forResponse> = {
-      code: 200,
+      code: 201,
       success: true,
       message: 'User created!',
       data: forResponse
@@ -91,7 +91,7 @@ export const deleteCtr = async (
     await userDeleter.run(id)
 
     const response: ApiResponse<typeof req.body> = {
-      code: 200,
+      code: 204,
       success: true,
       message: 'User deleted!',
       data: id
@@ -109,13 +109,13 @@ export const updateCtr = async (
   next: NextFunction
 ): Promise<any> => {
   const { id } = req.params
-  const { ci, name, lastName, address, email, phone, password, birthdate } =
+  const { ci, name, lastname, address, email, phone, password, birthdate } =
     req.body
 
   const data = {
     ci,
     name,
-    lastName,
+    lastname,
     address,
     email,
     phone,
@@ -126,7 +126,7 @@ export const updateCtr = async (
   const forResponse = {
     ci,
     name,
-    lastName,
+    lastname,
     address,
     email,
     phone,
