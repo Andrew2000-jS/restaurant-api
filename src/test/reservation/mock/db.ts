@@ -44,9 +44,4 @@ export class DbMock implements ReservationRepository {
 
     return foundReservation
   }
-
-  async getByUser(userId: string): Promise<Reservation[]> {
-    console.log(userId)
-    return await Promise.resolve(this.db)
-  }
 }

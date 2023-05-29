@@ -6,5 +6,4 @@ export interface ReservationRepository {
     delete: (id: string) => Promise<void>
     getById: (id: string) => Promise<Reservation | null>
     getAll: () => Promise<Reservation[]>
-    getByUser: (userId: string) => Promise<Reservation[]>
 }

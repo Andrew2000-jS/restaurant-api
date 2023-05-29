@@ -54,10 +54,4 @@ export class PostgresReservationRepository implements ReservationRepository {
     const result = await this._instance.query(query, [Number(id)])
     return result
   }
-
-  async getByUser(userId: string): Promise<Reservation[]> {
-    const query = 'SELECT * FROM reservations WHERE id_users=$1'
-    const result = await this._instance.query(query, [Number(userId)])
-    return result
-  }
 }

@@ -20,7 +20,7 @@ export class UserName {
       specialCharRegex.test(value) ||
       numCharRegex.test(value) ||
       value === ''
-    ) { throw new NameException() }
+    ) throw new NameException()
 
     this._value = value
   }
@@ -37,7 +37,7 @@ export class UserLastName {
       specialCharRegex.test(value) ||
       numCharRegex.test(value) ||
       value === ''
-    ) { throw new LastNameException() }
+    ) throw new LastNameException()
 
     this._value = value
   }
