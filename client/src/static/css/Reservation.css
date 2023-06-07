@@ -1,0 +1,14 @@
+.re-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.re-title {
+  margin-top: 3em;
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+}

@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import "../static/css/Globals.css";
+---
+
+<Layout title="Bienvenido">
+	<main class="container home-container">
+		<section class="home-section">
+			<article>
+				<img
+					class="home-img"
+					src="/public/burger-removebg-preview.png"
+					alt="burger image"
+				/>
+			</article>
+			<article class="home-a1">
+				<div>
+					<h1 class="home-title">
+						Lorem <span>ipsum dolor</span>, sit <span>amet</span> consectetur
+					</h1>
+				</div>
+				<div class="home-a2">
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing
+						elit. Doloremque reiciendis, amet, fugiat sunt
+						architecto similique saepe alias qui corporis cumque
+						quisquam quos consequatur. At sint earum beatae odit
+						magnam quo!
+					</p>
+					<button class="btn btn-order">Haz tu pedido</button>
+					<button class="btn btn-ubication">Nuestra ubicacion</button>
+				</div>
+			</article>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.home-a1,
+	.home-a2 {
+		width: 100%;
+	}
+
+	.home-img {
+		width: 100%;
+		margin-right: 30em;
+	}
+
+	.home-title {
+		font-size: 2.5em;
+		font-weight: 300;
+	}
+
+	.home-title > span {
+		font-weight: 600;
+	}
+
+	.home-section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.btn-order {
+		background-color: #e57c23;
+		color: #fff;
+		margin-right: 1%;
+	}
+
+	.btn-ubication {
+		background-color: transparent;
+		border: 1px solid #e57c23;
+		color: #e57c23;
+	}
+
+	.btn-order,
+	.btn-ubication {
+		transition: all 0.5s;
+		border-radius: 0.5em;
+	}
+
+	.btn-order:hover {
+		transition: all 0.5s;
+		background-color: transparent;
+		color: #e57c23;
+	}
+
+	.btn-ubication:hover {
+		transition: all 0.5s;
+		background-color: #e57c23;
+		color: #fff;
+	}
+</style>

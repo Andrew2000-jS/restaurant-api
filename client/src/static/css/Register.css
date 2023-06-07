@@ -1,0 +1,23 @@
+.reg-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.reg-pt1 {
+  width: 40%;
+}
+
+.reg-pt2 {
+  width: 100%;
+}
+
+.form-container {
+  width: 25em;
+}
+
+.reg-pt3 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

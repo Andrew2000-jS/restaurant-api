@@ -1,0 +1,128 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import "../static/css/Globals.css";
+
+import "../static/css/Form.css";
+import "../static/css/Register.css";
+---
+
+<script>
+    import {
+        handleSubmitRegister,
+        clearRegisterInputs,
+    } from "../static/ts/register";
+    clearRegisterInputs();
+    handleSubmitRegister();
+</script>
+
+<Layout title="Registrate">
+    <main class="form-main">
+        <section class="form-section">
+            <form class="form-container" id="formRegister">
+                <div>
+                    <h1 class="form-title">Registrate</h1>
+                </div>
+                <div class="error-container" id="alertContainer">
+                    <p id="alertMessage"></p>
+                </div>
+                <div class="reg-container">
+                    <div class="reg-pt1">
+                        <div class="form-inputs">
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Nombre"
+                                required
+                            />
+                        </div>
+                        <div class="form-inputs">
+                            <input
+                                type="text"
+                                placeholder="Apellido"
+                                id="lastName"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-inputs">
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Correo electronico"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="reg-pt2" id="regPt2">
+                            <div class="form-inputs">
+                                <input
+                                    type="text"
+                                    id="ci"
+                                    placeholder="Cedula"
+                                    required
+                                />
+                            </div>
+                            <div class="form-inputs">
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    placeholder="Telefono"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="form-inputs">
+                            <input
+                                type="date"
+                                id="date"
+                                placeholder="Fecha de nacimiento"
+                                required
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-inputs">
+                    <textarea
+                        name="address"
+                        id="address"
+                        cols="30"
+                        rows="5"
+                        placeholder="Direccion"></textarea>
+                </div>
+
+                <div class="reg-pt3">
+                    <div class="form-inputs">
+                        <input
+                            type="password"
+                            id="pwd"
+                            placeholder="Clave"
+                            required
+                        />
+                    </div>
+                    <div class="form-inputs">
+                        <input
+                            type="password"
+                            id="cpwd"
+                            placeholder="Repite la clave"
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="form-urls">
+                    <button class="btn" type="submit" id="registerBtn">
+                        Registrate
+                    </button>
+                </div>
+                <div class="form-links">
+                    <p>
+                        Ya tienes cuenta?
+                        <a href="login">Inicia sesion</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </main>
+</Layout>

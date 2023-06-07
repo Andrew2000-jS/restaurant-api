@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Card from "../components/Card.astro";
+
+import "../static/css/Globals.css";
+import "../static/css/Menu.css";
+
+import menu from "../menu.json";
+
+const data = await menu.menu;
+---
+
+<Layout title="Menu">
+    <main class="menu-container">
+        <section class="menu-container">
+            <article class="menu-title">
+                <h1>Menu</h1>
+                <p>
+                    OFRECEMOS A LA VENTA BARRAS DE DELICIOSO PAN DE LOBA LUN-VIE
+                    A PARTIR DE LAS 5PM Y SÁBADOS Y DOMINGOS A LAS 11:30AM.
+                    DISPONIBLE HASTA AGOTAR EXISTENCIAS.
+                </p>
+            </article>
+
+            <article class="grid-container">
+                {
+                    data.map((item) => (
+                        <Card
+                            title={item.titulo}
+                            body={item.descripcion}
+                            href={`/${item.titulo}/${item.id}`}
+                        />
+                    ))
+                }
+            </article>
+        </section>
+    </main>
+</Layout>

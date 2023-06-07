@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import "../static/css/Form.css";
+import "../static/css/Globals.css";
+---
+
+<script>
+    import { clearLoginValues, handleSubmitLogin } from "../static/ts/login";
+    clearLoginValues();
+    handleSubmitLogin();
+</script>
+
+<Layout title="Inicia sesion">
+    <main class="form-main">
+        <section class="form-section">
+            <form class="form-container" id="formLogin">
+                <div>
+                    <h1 class="form-title">Inicia Sesion</h1>
+                </div>
+                <div class="error-container" id="alertContainer">
+                    <p id="alertMessage"></p>
+                </div>
+                <div class="form-inputs">
+                    <input
+                        type="text"
+                        placeholder="Cedula"
+                        id="logCi"
+                        required
+                    />
+                </div>
+                <div class="form-inputs">
+                    <input
+                        type="password"
+                        id="logPwd"
+                        placeholder="Clave"
+                        required
+                    />
+                </div>
+                <div>
+                    <p class="form-pass">Olvidatse la clave?</p>
+                </div>
+                <div class="log-checkbox">
+                    <input type="checkbox" name="remeberMe" id="remeberMe" />
+                    <label for="remeberMe">Recuerdame</label>
+                </div>
+                <div class="form-urls">
+                    <button class="btn" id="logBtn"> Inicia Sesion</button>
+                </div>
+                <div class="form-links">
+                    <p>
+                        No tienes cuenta?
+                        <a href="register">Registrate</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .log-checkbox {
+        margin-top: 1em;
+        margin-bottom: 1.5em;
+    }
+</style>

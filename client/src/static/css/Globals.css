@@ -1,0 +1,17 @@
+.btn {
+  padding: 0.6em;
+  cursor: pointer;
+  border: none;
+}
+
+.container {
+  margin: auto;
+  padding: 2em 10rem 0 2.5rem;
+}
+
+.grid-container {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+}

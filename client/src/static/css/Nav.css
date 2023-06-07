@@ -1,0 +1,27 @@
+.navbar {
+  position: fixed;
+  margin-top: -10px;
+  width: 100%;
+  background-color: #e5e5e5;
+  z-index: 100000;
+}
+.navbar > ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar > ul > li > a {
+  text-decoration: none;
+  transition: all 0.5s;
+  color: #000;
+}
+
+.navbar > ul > li {
+  margin-left: 5%;
+}
+
+.link > a:hover {
+  transition: all 0.5s;
+  color: #e57c23;
+}

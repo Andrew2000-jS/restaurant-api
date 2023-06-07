@@ -1,0 +1,54 @@
+{
+    "menu": [
+        {
+            "id": 1,
+            "titulo": "Hamburguesa",
+            "descripcion": "Carne jugosa, queso derretido, lechuga fresca y salsa especial en un pan suave."
+        },
+        {
+            "id": 2,
+            "titulo": "Pizza",
+            "descripcion": "Masa crujiente cubierta con salsa de tomate, queso mozzarella, pepperoni y champiñones."
+        },
+        {
+            "id": 3,
+            "titulo": "Ensalada César",
+            "descripcion": "Lechuga romana fresca, pollo a la parrilla, crutones, queso parmesano y aderezo César."
+        },
+        {
+            "id": 4,
+            "titulo": "Sushi",
+            "descripcion": "Rollos de arroz rellenos de pescado fresco, aguacate y pepino, servidos con salsa de soja y wasabi."
+        },
+        {
+            "id": 5,
+            "titulo": "Tacos de Carnitas",
+            "descripcion": "Tortillas de maíz suaves rellenas de cerdo desmenuzado, cebolla, cilantro y salsa picante."
+        },
+        {
+            "id": 6,
+            "titulo": "Pasta Alfredo",
+            "descripcion": "Fettuccine en una cremosa salsa de queso parmesano, acompañado de pollo tierno y espárragos."
+        },
+        {
+            "id": 7,
+            "titulo": "Sopa de Tomate",
+            "descripcion": "Sopa caliente de tomate con hierbas frescas, servida con crutones crujientes."
+        },
+        {
+            "id": 8,
+            "titulo": "Filete Mignon",
+            "descripcion": "Un jugoso filete de res a la parrilla, acompañado de puré de papas y espárragos al vapor."
+        },
+        {
+            "id": 9,
+            "titulo": "Burrito Vegano",
+            "descripcion": "Tortilla de trigo rellena de frijoles, arroz, aguacate, verduras a la parrilla y salsa picante."
+        },
+        {
+            "id": 10,
+            "titulo": "Helado de Chocolate",
+            "descripcion": "Helado cremoso de chocolate belga, decorado con virutas de chocolate y salsa de caramelo."
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+.menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu-title {
+  margin-top: 5em;
+  width: 35%;
+  text-align: center;
+}
+
+.menu-title > h1 {
+  font-size: 4em;
+}

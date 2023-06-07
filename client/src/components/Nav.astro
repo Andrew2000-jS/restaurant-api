@@ -1,0 +1,38 @@
+---
+import "../static/css/Nav.css";
+---
+
+<script>
+    import { closeSession, showSession } from "../static/ts/navbar";
+    closeSession();
+    showSession();
+</script>
+
+<div class="navbar">
+    <ul>
+        <li class="logo">
+            <a href="/">
+                <img src="/public/logo.svg" alt="" />
+            </a>
+        </li>
+        <li class="link">
+            <a href="/">Inicio</a>
+        </li>
+        <li class="link">
+            <a href="menu">Menu</a>
+        </li>
+        <li class="link">
+            <a href="nosotros">Nosotros</a>
+        </li>
+        <li class="link">
+            <a href="#">Pide Online</a>
+        </li>
+        <li class="link">
+            <a href="reservation">Reserva Online</a>
+        </li>
+        <li class="link" id="navSession">
+            <a href="login" id="loginAncle">Inicia Sesion</a>
+            <a href="login" id="logoutAncle">Cerrar Sesion</a>
+        </li>
+    </ul>
+</div>

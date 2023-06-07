@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Card from "../components/Card.astro";
+
+import "../static/css/Globals.css";
+import "../static/css/Reservation.css";
+
+const MAX_RESERVATIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+---
+
+<Layout title="Reservaciones">
+    <main class="re-container">
+        <section class="re-section">
+            <article>
+                <h1 class="re-title">Reservaciones</h1>
+            </article>
+
+            <article class="grid-container" style="width: 50rem;">
+                {
+                    MAX_RESERVATIONS.map((_) => (
+                        <Card
+                            title="Reservacion"
+                            body=""
+                            href="#"
+                            image="../../public/booked.png"
+                        />
+                    ))
+                }
+            </article>
+        </section>
+    </main>
+</Layout>
