@@ -16,7 +16,8 @@ export class OrderUpdater {
             date: data.date ?? foundOrder.date,
             expired: new ExpiredOrders(data.expired ?? foundOrder.expired),
             total: new TotalOrders(data.total ?? foundOrder.total),
-            idUsers: new UserIdOrders(data.idUsers ?? foundOrder.idUsers)
+            idUsers: new UserIdOrders(data.idUsers ?? foundOrder.idUsers),
+            orders: data.orders ?? foundOrder.orders
         })
 
         await this._orderRepository.update(id, newOrder)

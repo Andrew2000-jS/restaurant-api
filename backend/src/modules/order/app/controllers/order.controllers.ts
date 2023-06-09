@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { ApiResponse } from '../../../../@types'
 import { orderCreator, orderDeleter, orderUpdater } from '../dependency-injection'
+import orderFinder from '../dependency-injection/orderFinder'
 
 export const createOrderCtr = async (
   req: Request,
@@ -12,7 +13,8 @@ export const createOrderCtr = async (
     date: body.date,
     total: body.total,
     expired: body.expired,
-    idUsers: body.idUsers
+    idUsers: body.idUsers,
+    orders: body.orders
   }
 
   try {
@@ -44,7 +46,8 @@ export const updateOrderCtr = async (
     date: body.date,
     total: body.total,
     expired: body.expired,
-    idUsers: body.idUsers
+    idUsers: body.idUsers,
+    orders: body.orders
   }
 
   try {
@@ -87,3 +90,17 @@ export const deleterOrderCtr = async (
       console.log(error)
     }
   }
+
+export const orderFinderCtr = async (
+  _req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<any> => {
+  try {
+    const orders = await orderFinder.run()
+    return res.status(200).json(orders)
+  } catch (error) {
+    next(error)
+    console.log(error)
+  }
+}

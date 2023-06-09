@@ -1,12 +1,10 @@
 ---
 import "../static/css/Nav.css";
+
+import "animate.css";
 ---
 
-<script>
-    import { closeSession, showSession } from "../static/ts/navbar";
-    closeSession();
-    showSession();
-</script>
+<script src="../static/ts/navbar.ts"></script>
 
 <div class="navbar">
     <ul>
@@ -22,17 +20,28 @@ import "../static/css/Nav.css";
             <a href="menu">Menu</a>
         </li>
         <li class="link">
-            <a href="nosotros">Nosotros</a>
+            <a href="us">Nosotros</a>
         </li>
         <li class="link">
-            <a href="#">Pide Online</a>
+            <a href="order">Pide Online</a>
         </li>
         <li class="link">
             <a href="reservation">Reserva Online</a>
         </li>
+        <li
+            class="link animate__animated animate__fadeIn"
+            style="display: none;"
+            id="myAccount"
+        >
+            <a href="user">Mi cuenta</a>
+        </li>
         <li class="link" id="navSession">
-            <a href="login" id="loginAncle">Inicia Sesion</a>
-            <a href="login" id="logoutAncle">Cerrar Sesion</a>
+            <a href="login" style="display:none;" id="loginAncle"
+                >Inicia Sesion</a
+            >
+            <a href="login" style="display:none;" id="logoutAncle"
+                >Cerrar Sesion</a
+            >
         </li>
     </ul>
 </div>

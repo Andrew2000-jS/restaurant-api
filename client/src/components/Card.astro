@@ -1,12 +1,16 @@
 ---
+import "../static/css/Globals.css";
+
 export interface Props {
   title: string;
   body: string;
   href: string;
   image?: string;
+  foodImg?: string;
+  button?: string;
 }
 
-const { href, title, body, image } = Astro.props;
+const { href, title, body, image, button } = Astro.props;
 ---
 
 <li class="link-card" id="cardContainer">
@@ -19,11 +23,19 @@ const { href, title, body, image } = Astro.props;
     />
     <h2>
       {title}
-      {image !== undefined ? <img src={image} class="img-card" /> : null}
+      {image && <img src={image} class="img-card" />}
     </h2>
     <p>
       {body}
     </p>
+
+    {
+      button && (
+        <button class="btn card-btn" id="reserveBtn">
+          {button}
+        </button>
+      )
+    }
   </a>
 </li>
 
@@ -87,5 +99,18 @@ const { href, title, body, image } = Astro.props;
   }
   .link-card:is(:hover, :focus-within) h2 {
     color: rgb(255, 82, 0);
+  }
+  .card-btn {
+    width: 100%;
+    transition: all 0.5s;
+    border: 1px solid var(--primary);
+    border-radius: 0.2rem;
+    color: var(--primary);
+  }
+
+  .card-btn:hover {
+    transition: all 0.5s;
+    background: var(--primary);
+    color: #fff;
   }
 </style>

@@ -3,17 +3,15 @@ import Layout from "../layouts/Layout.astro";
 
 import "../static/css/Form.css";
 import "../static/css/Globals.css";
+
+import "animate.css";
 ---
 
-<script>
-    import { clearLoginValues, handleSubmitLogin } from "../static/ts/login";
-    clearLoginValues();
-    handleSubmitLogin();
-</script>
+<script src="../static/ts/login.ts"></script>
 
 <Layout title="Inicia sesion">
     <main class="form-main">
-        <section class="form-section">
+        <section class="form-section animate__animated animate__fadeInUp">
             <form class="form-container" id="formLogin">
                 <div>
                     <h1 class="form-title">Inicia Sesion</h1>

@@ -5,9 +5,30 @@ import Card from "../components/Card.astro";
 
 import "../static/css/Globals.css";
 import "../static/css/Reservation.css";
+import Modal from "../components/Modal.astro";
 
 const MAX_RESERVATIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const inputs = [
+    {
+        id: "reserDate",
+        type: "date",
+        placeholder: "",
+    },
+    {
+        id: "reserCount",
+        type: "string",
+        placeholder: "Cantidad de clientes",
+    },
+    {
+        id: "reserHour",
+        type: "time",
+        placeholder: "Hora",
+    },
+];
 ---
+
+<script src="../static/ts/reservation.ts"></script>
 
 <Layout title="Reservaciones">
     <main class="re-container">
@@ -24,10 +45,19 @@ const MAX_RESERVATIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
                             body=""
                             href="#"
                             image="../../public/booked.png"
+                            button="Reserva"
                         />
                     ))
                 }
             </article>
         </section>
+        <div>
+            <Modal
+                title="Reservacion"
+                inputs={inputs}
+                btnTitle="Finalizar"
+                href="#"
+            />
+        </div>
     </main>
 </Layout>

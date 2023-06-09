@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 import "../static/css/Globals.css";
+import "animate.css";
 ---
 
 <Layout title="Bienvenido">
@@ -9,12 +10,12 @@ import "../static/css/Globals.css";
 		<section class="home-section">
 			<article>
 				<img
-					class="home-img"
+					class="home-img animate__animated animate__fadeInLeft"
 					src="/public/burger-removebg-preview.png"
 					alt="burger image"
 				/>
 			</article>
-			<article class="home-a1">
+			<article class="home-a1 animate__animated animate__fadeInRight">
 				<div>
 					<h1 class="home-title">
 						Lorem <span>ipsum dolor</span>, sit <span>amet</span> consectetur
@@ -60,6 +61,7 @@ import "../static/css/Globals.css";
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		overflow-x: hidden;
 	}
 
 	.btn-order {

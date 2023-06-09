@@ -4,6 +4,7 @@ export interface ApiResponse<T> {
     message: string
     data?: T
     token?: string
+    id?: string | number
     error?: ApiError
   }
 
@@ -11,4 +12,6 @@ export interface ApiError {
     code: number
     message: string
     details?: unknown
+    token: any
+    id?: any
 }

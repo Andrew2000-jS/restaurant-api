@@ -1,6 +1,7 @@
 .navbar {
   position: fixed;
   margin-top: -10px;
+  left: 0;
   width: 100%;
   background-color: #e5e5e5;
   z-index: 100000;
@@ -24,4 +25,8 @@
 .link > a:hover {
   transition: all 0.5s;
   color: #e57c23;
+}
+
+.logout {
+  display: none;
 }

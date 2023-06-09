@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { reservationCreator, reservationDeleter, reservationUpdater } from '../dependency-injection'
 import { ApiResponse } from '../../../../@types'
+import reservationFinder from '../dependency-injection/reservationFinder'
 
 export const reserveCtr = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const { body } = req
@@ -74,5 +75,19 @@ export const deleteReserveCtr = async (req: Request, res: Response, next: NextFu
     } catch (error) {
         console.log(error)
         next(error)
+    }
+}
+
+export const reservationFinderCtr = async (
+    _req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
+    try {
+      const orders = await reservationFinder.run()
+      return res.status(200).json(orders)
+    } catch (error) {
+      next(error)
+      console.log(error)
     }
 }

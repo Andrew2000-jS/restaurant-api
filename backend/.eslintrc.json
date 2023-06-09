@@ -1,6 +1,6 @@
 {
     "parserOptions": {
-      "project": "./tsconfig.json",
+      "project": "./backend/tsconfig.json",
       "ecmaVersion": "latest",
       "EXPERIMENTAL_useSourceOfProjectReferenceRedirect": true
     },

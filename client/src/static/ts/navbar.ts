@@ -3,21 +3,22 @@ import { findItem, removeItem } from "./localStorage";
 
 const loginAncle = $("loginAncle");
 const logoutAncle = $("logoutAncle");
+const myAccount = $('myAccount')
 
-export function showSession() {
-  const isExistToken = findItem();
+const isExistToken = findItem('token');
 
-  if (isExistToken) {
-    loginAncle!.style.display = 'none';
-    logoutAncle!.style.display = 'block';
-  } else {
-    loginAncle!.style.display = 'block';
-    logoutAncle!.style.display = 'none';
-  }
+if (isExistToken) {
+  loginAncle!.style.display = "none";
+  logoutAncle!.style.display = "block";
+  myAccount!.style.display = 'block';
+} else {
+  loginAncle!.style.display = "block";
+  logoutAncle!.style.display = "none";
+  myAccount!.style.display = 'none';
+
 }
 
-export const closeSession = () => {
-    logoutAncle?.addEventListener("click", (e) => {
-    removeItem();
-  });
-};
+logoutAncle?.addEventListener("click", (e) => {
+  removeItem('token');
+  removeItem('user');
+});

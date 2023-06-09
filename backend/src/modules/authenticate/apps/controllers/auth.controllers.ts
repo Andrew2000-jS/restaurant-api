@@ -3,7 +3,8 @@ import {
   userCreator,
   userDeleter,
   userLogger,
-  userUpdater
+  userUpdater,
+  findByCi
 } from '../dependency-injection'
 import { ApiResponse } from '../../../../@types'
 import { createToken } from '../../../../shared/middlewares'
@@ -144,6 +145,21 @@ export const updateCtr = async (
     }
 
     return res.status(200).json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const findCiCtr = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<any> => {
+  const { ci } = req.params
+
+  try {
+    const foundUser = await findByCi.run(Number(ci))
+    return res.status(200).json(foundUser)
   } catch (error) {
     next(error)
   }

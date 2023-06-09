@@ -1,0 +1,66 @@
+---
+import "../static/css/Globals.css";
+import "../static/css/Order.css";
+import "animate.css";
+
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/FoodCard.astro";
+
+import menu from "../menu.json";
+
+const data = await menu.menu;
+---
+
+<script src="../static/ts/order.ts"></script>
+<Layout title="Pedido">
+    <main class="container">
+        <div
+            class="error-container"
+            id="alertContainer"
+            style="position: absolute; z-index: 10000; top: 29%; right: 0%; border-radius: .5em; width: 25%; text-align: center;"
+        >
+            <p id="alertMessage"></p>
+        </div>
+        <section class="order-section animate__animated animate__fadeIn">
+            <div class="order-p1">
+                <header class="order-banner">
+                    <img src="/banner.jpg" alt="" class="order-img" />
+                </header>
+                <div id="orderFoodList" class="grid-container order-food">
+                    {
+                        data.map((item) => (
+                            <Card
+                                id={item.id}
+                                image="../../public/burg.jpeg"
+                                title={item.titulo}
+                                body="Precio 10$"
+                                button="Agregar"
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="order-checkout">
+                <header class="order-checkout-header">
+                    <h3>Paga tu compra</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                </header>
+
+                <div id="orderList" class="order-checkout-list"></div>
+                <hr class="separator" />
+                <div class="order-checkout-total">
+                    <p>Subtotal: <span class="order-total">30.5$</span></p>
+                    <p>Total: <span class="order-total">130.5$</span></p>
+                </div>
+
+                <footer class="order-checkout-fooder">
+                    <button id="orderBtn" class="btn order-btn">
+                        Comprar</button
+                    >
+                </footer>
+            </div>
+        </section>
+    </main>
+</Layout>

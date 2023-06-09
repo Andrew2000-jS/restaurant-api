@@ -6,6 +6,7 @@ export interface OrderPrimitiveData {
   total: number
   idUsers: number
   expired: boolean
+  orders: any[]
 }
 
 export class Order extends EntityRoot<Order, OrderPrimitiveData> {
@@ -13,19 +14,23 @@ export class Order extends EntityRoot<Order, OrderPrimitiveData> {
   readonly total: TotalOrders
   readonly idUsers: UserIdOrders
   readonly expired: ExpiredOrders
+  readonly orders: any[]
 
   constructor({
     date,
     total,
     idUsers,
-    expired
+    expired,
+    orders
   }: {
     date: Date
     total: TotalOrders
     idUsers: UserIdOrders
     expired: ExpiredOrders
+    orders: any[]
   }) {
     super()
+    this.orders = orders
     this.date = date
     this.total = total
     this.idUsers = idUsers
@@ -36,9 +41,11 @@ export class Order extends EntityRoot<Order, OrderPrimitiveData> {
     date: Date,
     total: TotalOrders,
     idUsers: UserIdOrders,
-    expired: ExpiredOrders
+    expired: ExpiredOrders,
+    orders: any[]
   ): Order {
     return new Order({
+      orders,
       date,
       total,
       idUsers,
@@ -51,8 +58,10 @@ export class Order extends EntityRoot<Order, OrderPrimitiveData> {
     total: number
     idUsers: number
     expired: boolean
+    orders: any[]
   }): Order {
     return new Order({
+      orders: plainData.orders,
       date: plainData.date,
       total: new TotalOrders(plainData.total),
       idUsers: new UserIdOrders(plainData.idUsers),
@@ -62,6 +71,7 @@ export class Order extends EntityRoot<Order, OrderPrimitiveData> {
 
   toPrimitives(): OrderPrimitiveData {
     return {
+      orders: this.orders,
       date: this.date,
       total: this.total._value,
       idUsers: this.idUsers._value,

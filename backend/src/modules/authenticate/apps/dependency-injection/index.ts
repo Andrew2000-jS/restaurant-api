@@ -1,3 +1,4 @@
+export { default as findByCi } from './findByCi'
 export { default as userCreator } from './userCreator'
 export { default as userDeleter } from './userDeleter'
 export { default as userLogger } from './userLogger'

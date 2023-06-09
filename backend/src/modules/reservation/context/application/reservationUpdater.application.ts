@@ -30,7 +30,7 @@ export class ReservationUpdater {
       hour: new ReservationHour(reservationData.hour ?? foundReservation.hour),
       status: new ReservationAvalible(reservationData.status ?? foundReservation.status),
       count: new ReservationPeopleCount(reservationData.count ?? foundReservation.count),
-      user: new ReservationUser(reservationData.user ?? foundReservation.id_users)
+      user: new ReservationUser(reservationData.user ?? foundReservation.idUsers)
     })
 
     await this._reservationRepository.update(id, newReservation)

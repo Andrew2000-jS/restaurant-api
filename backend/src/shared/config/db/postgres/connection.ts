@@ -18,10 +18,19 @@ export class PostgresDB {
     return PostgresDB.instance
   }
 
-  public async query(text: string, params?: any[]): Promise<any> {
+  public async query(
+    text: string,
+    params?: any[],
+    many: boolean = false
+  ): Promise<any> {
     try {
-        const response = await this.pool.query(text, params)
+      const response = await this.pool.query(text, params)
+
+      if (!many) {
         return response.rows[0]
+      }
+
+      return response.rows
     } catch (error: any) {
       console.log(error.message)
       throw new PgException()

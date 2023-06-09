@@ -1,0 +1,125 @@
+---
+import "../static/css/Globals.css";
+
+export interface Props {
+    id: string | number;
+    title: string;
+    body: string;
+    image?: string;
+    foodImg?: string;
+    button?: string;
+}
+
+const { title, body, image, button, id } = Astro.props;
+---
+
+<li class="link-card" id="foodCardContainer" data-id={id}>
+    <div>
+        <img
+            src="../../public/checked.png"
+            alt=""
+            class="check-card"
+            id="checkCard"
+        />
+        <h2>
+            {image && <img src={image} class="img-card" />}
+            {title}
+        </h2>
+        <footer>
+            <p>
+                {body}
+            </p>
+
+            {
+                button && (
+                    <button class="btn card-btn" id="addOrderBtn">
+                        {button}
+                    </button>
+                )
+            }
+        </footer>
+    </div>
+</li>
+
+<style>
+    .link-card {
+        position: relative;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0.25rem;
+        background-color: white;
+        background-image: none;
+        background-size: 400%;
+        border-radius: 0.6rem;
+        background-position: 100%;
+        transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .check-card {
+        display: none;
+        width: 20px;
+        position: absolute;
+        right: 1%;
+        top: 1%;
+    }
+    .img-card {
+        width: 100px;
+        margin-top: 1em;
+    }
+
+    .link-card > div {
+        cursor: pointer;
+        width: 100%;
+        line-height: 1.4;
+        padding: 1rem 1.3rem;
+        border-radius: 0.35rem;
+        color: #111;
+        background-color: white;
+        opacity: 0.8;
+    }
+    h2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-size: 1.25rem;
+        transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    p {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+        color: #444;
+    }
+    .link-card:is(:hover, :focus-within) {
+        background-position: 0;
+        background-image: var(--accent-gradient);
+    }
+    .link-card:is(:hover, :focus-within) h2 {
+        color: rgb(255, 82, 0);
+    }
+
+    .link-card > div > footer {
+        margin-top: .5em
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-btn {
+        width: 100%;
+        transition: all 0.5s;
+        border: 1px solid var(--primary);
+        border-radius: 0.2rem;
+        color: var(--primary);
+    }
+
+    .card-btn:hover {
+        transition: all 0.5s;
+        background: var(--primary);
+        color: #fff;
+    }
+</style>

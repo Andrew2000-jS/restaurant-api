@@ -1,0 +1,101 @@
+.order-section {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5%;
+  margin-top: 5%;
+}
+
+.order-p1 {
+  width: 100%;
+}
+
+.order-banner {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 1em;
+}
+.order-banner > .order-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5em;
+}
+
+.order-food {
+  margin-top: 3em;
+  width: 100%;
+}
+
+.order-checkout {
+  align-self: flex-start;
+  width: 30%;
+  height: 100vh;
+  border: 1px solid #fff;
+  border-radius: 0.5em;
+  background: #fff;
+}
+
+.order-checkout-header {
+  text-align: center;
+}
+
+.order-checkout-header > p {
+  font-size: 0.8em;
+}
+
+.separator {
+  width: 80%;
+}
+
+.order-checkout-list {
+  height: 50%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.order-checkout-fooder {
+  height: 100%;
+  padding: 0.5em;
+}
+
+.order-btn {
+  transition: all 0.5s;
+  background: var(--primary);
+  padding: 1em;
+  border: 1px solid var(--primary);
+  border-radius: 0.2em;
+  font-size: 1em;
+  width: 100%;
+  color: #fff;
+}
+
+.order-btn:hover {
+  transition: all 0.5s;
+  background: transparent;
+  color: var(--primary);
+}
+.order-checkout-list {
+  margin-bottom: 15%;
+}
+
+.order-checkout-total > p {
+  color: gray;
+  font-size: 0.8em;
+}
+
+.order-total {
+  color: #000;
+}
+
+.o-card {
+  margin-top: 1em;
+  text-align: center;
+  border: 1px solid #eee2de;
+}
+
+.o-card > header > h4 {
+  color: var(--primary);
+}

@@ -8,6 +8,7 @@ import morgan from 'morgan'
 
 import { authRoutes } from '../modules/authenticate/apps/routes'
 import { reservationRoutes } from '../modules/reservation/apps/routes'
+import { orderRoutes } from '../modules/order/app/routes'
 
 import { errorMiddleware } from '../shared'
 
@@ -25,6 +26,7 @@ export class Server {
     this._express.use(morgan('dev'))
     this._express.use('/api', authRoutes)
     this._express.use('/api', reservationRoutes)
+    this._express.use('/api', orderRoutes)
     this._express.use('/api/docs/auth', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
     this._express.use(errorMiddleware)
   }

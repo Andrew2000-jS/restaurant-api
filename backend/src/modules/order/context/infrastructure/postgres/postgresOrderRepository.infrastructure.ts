@@ -9,8 +9,8 @@ export class PostgresOrderRepository implements OrderRepository {
   }
 
   async create(order: Order): Promise<Order> {
-    const columns = ['date', 'total', 'idUsers', 'expired']
-    const values = [order.date, order.total._value, order.idUsers._value, order.expired._value]
+    const columns = ['date', 'total', 'idUsers', 'orderlist', 'expired']
+    const values = [order.date, order.total._value, order.idUsers._value, order.orders, order.expired._value]
     const insert = CommonQueries.insert('orders', columns, values)
 
     const result = await this._instance.query(insert, values)
@@ -18,8 +18,8 @@ export class PostgresOrderRepository implements OrderRepository {
   }
 
   async update(id: number, order: Order): Promise<Order> {
-    const query = 'UPATE orders SET date=$1, total=$2, idUsers=$3, expired=$4 WHERE id=$5'
-    const values = [order.date, order.total._value, order.idUsers._value, order.expired._value, Number(id)]
+    const query = 'UPATE orders SET date=$1, total=$2, idUsers=$3, orderlist=$4, expired=$5 WHERE id=$6'
+    const values = [order.date, order.total._value, order.idUsers._value, order.orders, order.expired._value, Number(id)]
 
     const result = await this._instance.query(query, values)
     return result
@@ -34,7 +34,7 @@ export class PostgresOrderRepository implements OrderRepository {
 
   async findAll(): Promise<Order[]> {
     const getAll = CommonQueries.findAll('orders')
-    const result = await this._instance.query(getAll)
+    const result = await this._instance.query(getAll, [], true)
     return result
   }
 

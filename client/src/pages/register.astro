@@ -5,20 +5,15 @@ import "../static/css/Globals.css";
 
 import "../static/css/Form.css";
 import "../static/css/Register.css";
+
+import "animate.css";
 ---
 
-<script>
-    import {
-        handleSubmitRegister,
-        clearRegisterInputs,
-    } from "../static/ts/register";
-    clearRegisterInputs();
-    handleSubmitRegister();
-</script>
+<script src="../static/ts/register.ts"></script>
 
 <Layout title="Registrate">
     <main class="form-main">
-        <section class="form-section">
+        <section class="form-section animate__animated animate__fadeInDownBig">
             <form class="form-container" id="formRegister">
                 <div>
                     <h1 class="form-title">Registrate</h1>

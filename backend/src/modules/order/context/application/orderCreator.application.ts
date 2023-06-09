@@ -12,8 +12,11 @@ export class OrderCreator {
             date: orderRepository.date,
             expired: new ExpiredOrders(orderRepository.expired),
             total: new TotalOrders(orderRepository.total),
-            idUsers: new UserIdOrders(orderRepository.idUsers)
+            idUsers: new UserIdOrders(orderRepository.idUsers),
+            orders: orderRepository.orders
         })
+
+        console.log(data)
 
         const newOrder = await this._orderRepository.create(data)
         return newOrder

@@ -16,7 +16,7 @@ export class PostgresReservationRepository implements ReservationRepository {
       'hour',
       'count',
       'status',
-      'id_users'
+      'idUsers'
     ]
     const values = [date, hour._value, count._value, status._value, user._value]
     const insert = CommonQueries.insert('reservations', columns, values)
@@ -42,7 +42,7 @@ export class PostgresReservationRepository implements ReservationRepository {
 
   async getAll(): Promise<Reservation[]> {
     const query = CommonQueries.findAll('reservations')
-    const result = await this._instance.query(query)
+    const result = await this._instance.query(query, [], true)
     if (result === undefined) {
       return []
     }

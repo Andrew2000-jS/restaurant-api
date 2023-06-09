@@ -3,52 +3,86 @@
         {
             "id": 1,
             "titulo": "Hamburguesa",
-            "descripcion": "Carne jugosa, queso derretido, lechuga fresca y salsa especial en un pan suave."
+            "descripcion": "Carne jugosa, queso derretido, lechuga fresca y salsa especial en un pan suave.",
+            "imagen": "ruta/de/imagen/hamburguesa.jpg"
         },
         {
             "id": 2,
             "titulo": "Pizza",
-            "descripcion": "Masa crujiente cubierta con salsa de tomate, queso mozzarella, pepperoni y champiñones."
+            "descripcion": "Masa crujiente cubierta con salsa de tomate, queso mozzarella, pepperoni y champiñones.",
+            "imagen": "ruta/de/imagen/pizza.jpg"
         },
         {
             "id": 3,
             "titulo": "Ensalada César",
-            "descripcion": "Lechuga romana fresca, pollo a la parrilla, crutones, queso parmesano y aderezo César."
+            "descripcion": "Lechuga romana fresca, pollo a la parrilla, crutones, queso parmesano y aderezo César.",
+            "imagen": "ruta/de/imagen/ensalada.jpg"
         },
         {
             "id": 4,
             "titulo": "Sushi",
-            "descripcion": "Rollos de arroz rellenos de pescado fresco, aguacate y pepino, servidos con salsa de soja y wasabi."
+            "descripcion": "Rollos de arroz rellenos de pescado fresco, aguacate y pepino, servidos con salsa de soja y wasabi.",
+            "imagen": "ruta/de/imagen/sushi.jpg"
         },
         {
             "id": 5,
             "titulo": "Tacos de Carnitas",
-            "descripcion": "Tortillas de maíz suaves rellenas de cerdo desmenuzado, cebolla, cilantro y salsa picante."
+            "descripcion": "Tortillas de maíz suaves rellenas de cerdo desmenuzado, cebolla, cilantro y salsa picante.",
+            "imagen": "ruta/de/imagen/tacos.jpg"
         },
         {
             "id": 6,
             "titulo": "Pasta Alfredo",
-            "descripcion": "Fettuccine en una cremosa salsa de queso parmesano, acompañado de pollo tierno y espárragos."
+            "descripcion": "Fettuccine en una cremosa salsa de queso parmesano, acompañado de pollo tierno y espárragos.",
+            "imagen": "ruta/de/imagen/pasta.jpg"
         },
         {
             "id": 7,
             "titulo": "Sopa de Tomate",
-            "descripcion": "Sopa caliente de tomate con hierbas frescas, servida con crutones crujientes."
+            "descripcion": "Sopa caliente de tomate con hierbas frescas, servida con crutones crujientes.",
+            "imagen": "ruta/de/imagen/sopa.jpg"
         },
         {
             "id": 8,
             "titulo": "Filete Mignon",
-            "descripcion": "Un jugoso filete de res a la parrilla, acompañado de puré de papas y espárragos al vapor."
+            "descripcion": "Un jugoso filete de res a la parrilla, acompañado de puré de papas y espárragos al vapor.",
+            "imagen": "ruta/de/imagen/filete.jpg"
         },
         {
             "id": 9,
             "titulo": "Burrito Vegano",
-            "descripcion": "Tortilla de trigo rellena de frijoles, arroz, aguacate, verduras a la parrilla y salsa picante."
+            "descripcion": "Tortilla de trigo rellena de frijoles, arroz, aguacate, verduras a la parrilla y salsa picante.",
+            "imagen": "ruta/de/imagen/burrito.jpg"
         },
         {
             "id": 10,
             "titulo": "Helado de Chocolate",
-            "descripcion": "Helado cremoso de chocolate belga, decorado con virutas de chocolate y salsa de caramelo."
+            "descripcion": "Helado cremoso de chocolate belga, decorado con virutas de chocolate y salsa de caramelo.",
+            "imagen": "ruta/de/imagen/helado.jpg"
+        },
+        {
+            "id": 11,
+            "titulo": "Nuevo elemento 1",
+            "descripcion": "Descripción del nuevo elemento 1.",
+            "imagen": "ruta/de/imagen/nuevo1.jpg"
+        },
+        {
+            "id": 12,
+            "titulo": "Nuevo elemento 2",
+            "descripcion": "Descripción del nuevo elemento 2.",
+            "imagen": "ruta/de/imagen/nuevo2.jpg"
+        },
+        {
+            "id": 13,
+            "titulo": "Nuevo elemento 3",
+            "descripcion": "Descripción del nuevo elemento 3.",
+            "imagen": "ruta/de/imagen/nuevo3.jpg"
+        },
+        {
+            "id": 14,
+            "titulo": "Nuevo elemento 4",
+            "descripcion": "Descripción del nuevo elemento 4.",
+            "imagen": "ruta/de/imagen/nuevo4.jpg"
         }
     ]
 }

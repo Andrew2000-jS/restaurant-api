@@ -1,0 +1,30 @@
+.user-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.user-orders,
+.user-reservations {
+  text-align: center;
+  width: 100%;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  background-color: #ddd;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.card-body {
+  padding: 5px;
+}

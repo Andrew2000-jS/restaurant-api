@@ -1,0 +1,67 @@
+---
+import "../static/css/Modal.css";
+import "../static/css/Form.css";
+
+export interface Props {
+    title: string;
+    href: string;
+    btnTitle: string;
+    content?: string;
+    inputs?: any[];
+    subTitle?: string;
+}
+
+const { title, href, content, inputs, btnTitle, subTitle } = Astro.props;
+---
+
+<script src="../static/ts/modal.ts"></script>
+<main id="modalContainer" class="modal-container">
+    <div
+        id="modalWrapper"
+        class="modal-wrapper animate__animated animate__fadeInDown"
+    >
+        <header>
+            <h2 class="modal-title">{title}</h2>
+        </header>
+        <div class="error-container" id="alertContainer">
+            <p id="alertMessage"></p>
+        </div>
+        <section class="modal-section">
+            {subTitle && <header>{subTitle}</header>}
+            {content && <div>{content}</div>}
+            {
+                inputs && (
+                    <form class="">
+                        <div class="error-container" id="alertContainer">
+                            <p id="alertMessage" />
+                        </div>
+                        <div class="">
+                            {inputs.map(({ type, placeholder, id }) => (
+                                <div class="form-inputs">
+                                    <input
+                                        id={id}
+                                        type={type}
+                                        placeholder={placeholder}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </form>
+                )
+            }
+
+            <footer>
+                <button
+                    type="button"
+                    id="modalSuccess"
+                    class="btn modal-btn-success">{btnTitle}</button
+                >
+                <button
+                    type="button"
+                    id="modalClose"
+                    class="btn modal-btn-danger">Cancelar</button
+                >
+            </footer>
+        </section>
+    </div>
+</main>
