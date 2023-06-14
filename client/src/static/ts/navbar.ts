@@ -3,7 +3,9 @@ import { findItem, removeItem } from "./localStorage";
 
 const loginAncle = $("loginAncle");
 const logoutAncle = $("logoutAncle");
-const myAccount = $('myAccount')
+const myAccount = $('myAccount');
+const menuBtn = $('menuBtn');
+const resNav = $('resNav')
 
 const isExistToken = findItem('token');
 
@@ -22,3 +24,7 @@ logoutAncle?.addEventListener("click", (e) => {
   removeItem('token');
   removeItem('user');
 });
+
+menuBtn?.addEventListener('click', (e) => {
+  resNav?.classList.toggle('show')
+})

@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 import "../static/css/Globals.css";
+import "../static/css/Home.css";
 import "animate.css";
 ---
 
@@ -36,61 +37,3 @@ import "animate.css";
 		</section>
 	</main>
 </Layout>
-
-<style>
-	.home-a1,
-	.home-a2 {
-		width: 100%;
-	}
-
-	.home-img {
-		width: 100%;
-		margin-right: 30em;
-	}
-
-	.home-title {
-		font-size: 2.5em;
-		font-weight: 300;
-	}
-
-	.home-title > span {
-		font-weight: 600;
-	}
-
-	.home-section {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		overflow-x: hidden;
-	}
-
-	.btn-order {
-		background-color: #e57c23;
-		color: #fff;
-		margin-right: 1%;
-	}
-
-	.btn-ubication {
-		background-color: transparent;
-		border: 1px solid #e57c23;
-		color: #e57c23;
-	}
-
-	.btn-order,
-	.btn-ubication {
-		transition: all 0.5s;
-		border-radius: 0.5em;
-	}
-
-	.btn-order:hover {
-		transition: all 0.5s;
-		background-color: transparent;
-		color: #e57c23;
-	}
-
-	.btn-ubication:hover {
-		transition: all 0.5s;
-		background-color: #e57c23;
-		color: #fff;
-	}
-</style>
