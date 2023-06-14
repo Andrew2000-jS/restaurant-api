@@ -11,6 +11,12 @@
   width: 100%;
 }
 
+.order-food-list {
+  height: 30rem;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 .order-banner {
   width: 100%;
   border: 1px solid transparent;
@@ -98,4 +104,29 @@
 
 .o-card > header > h4 {
   color: var(--primary);
+}
+
+@media screen and (max-width: 820px) {
+  .container {
+    padding: 0;
+  }
+
+  .order-banner {
+    margin-top: 6em;
+  }
+
+  .order-section {
+    flex-direction: column;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .order-p1 {
+    width: 100%;
+    margin-bottom: 4em;
+  }
+
+  .order-checkout {
+    width: 100%;
+  }
 }

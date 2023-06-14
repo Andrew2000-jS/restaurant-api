@@ -15,6 +15,8 @@ const reserHour = $("reserHour") as HTMLInputElement;
 
 const userId = JSON.parse(localStorage.getItem("user")!);
 
+let flag = false;
+
 cardBtn?.forEach((vals) => {
   vals.addEventListener("click", (e) => {
     modalContainer!.style.display = "flex";

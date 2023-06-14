@@ -1,10 +1,11 @@
 .navbar {
+  height: 4em;
   position: fixed;
   margin-top: -10px;
   left: 0;
   width: 100%;
-  background-color: #e5e5e5;
-  z-index: 100000;
+  background: #e5e5e5;
+  z-index: 10;
 }
 .navbar > ul {
   list-style: none;
@@ -84,9 +85,10 @@
 }
 
 .res-menu {
-  background: #e5e5e5;
-  z-index: 1000000;
+  margin-top: -2.5em;
   height: 100vh;
+  background: #e5e5e5;
+  z-index: 10;
 }
 
 .res-link {
@@ -103,6 +105,11 @@
 }
 
 @media screen and (max-width: 820px) {
+  .navbar {
+    margin-top: -32px;
+    height: 6em;
+  }
+
   .menu-wrapper {
     display: flex;
   }
@@ -113,6 +120,16 @@
   }
 
   .link {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .res-menu {
+    display: none;
+  }
+
+  .show {
     display: none;
   }
 }
