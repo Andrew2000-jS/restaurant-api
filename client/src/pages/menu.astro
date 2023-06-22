@@ -1,4 +1,6 @@
 ---
+import "animate.css";
+
 import Layout from "../layouts/Layout.astro";
 
 import Card from "../components/Card.astro";
@@ -13,7 +15,7 @@ const data = await menu.menu;
 
 <Layout title="Menu">
     <main class="menu-container">
-        <section class="menu-container">
+        <section class="menu-container animate__animated animate__fadeIn">
             <article class="menu-title">
                 <h1>Menu</h1>
                 <p>
@@ -29,7 +31,7 @@ const data = await menu.menu;
                         <Card
                             title={item.titulo}
                             body={item.descripcion}
-                            href={`/${item.titulo}/${item.id}`}
+                            href={`#`}
                         />
                     ))
                 }

@@ -88,8 +88,5 @@ getOrdersService().then((res) => {
 
 
 getReservationService().then((res) => {
-    const reservation = res.filter(
-      (o: any) => Number(o.id) === Number(user.id)
-    );
-    renderReservations(reservation);
+    renderReservations(res);
   });

@@ -11,15 +11,13 @@ const formLogin = $("formLogin");
 const ci = $("logCi") as HTMLInputElement;
 const password = $("logPwd") as HTMLInputElement;
 
-const logBtn = $("logBtn") as HTMLInputElement;
+const logBtn = $("logBtn") as HTMLButtonElement;
 
 ci.value = "";
 password.value = "";
 
 formLogin?.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  logBtn.disabled = true;
 
   const data: ILogin = {
     ci: validCi(ci.value),
@@ -30,8 +28,9 @@ formLogin?.addEventListener("submit", (e) => {
     .then((res) => {
       addItem(res.token, 'token');
       if (Number(res.code) === 200) {
+        logBtn.disabled = true;
         showAlert("Seras redirigido!", "success");
-        findUserByCiService('28026084').then(res => addItem(res, 'user')).catch(err => console.log(err))
+        findUserByCiService(data.ci.toString()).then(res => addItem(res, 'user')).catch(err => console.log(err))
         setTimeout(() => {
           window.location.replace("/");
         }, 5000);
